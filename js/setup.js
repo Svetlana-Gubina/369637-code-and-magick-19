@@ -16,8 +16,16 @@
     return element;
   };
 
+  var userDialog = document.querySelector('.setup');
+  var setupOpen = document.querySelector('.setup-open');
+  var setupClose = userDialog.querySelector('.setup-close');
+  var TOP = '80px';
+  var LEFT = '50%';
+
   var openUserDialog = function () {
     show(userDialog);
+    userDialog.style.top = TOP;
+    userDialog.style.left = LEFT;
     setupClose.addEventListener('click', closeUserDialog);
     document.addEventListener('keydown', escPressCloseUserDialog);
   };
@@ -32,10 +40,6 @@
       closeUserDialog();
     }
   };
-
-  var userDialog = document.querySelector('.setup');
-  var setupOpen = document.querySelector('.setup-open');
-  var setupClose = userDialog.querySelector('.setup-close');
 
   setupOpen.addEventListener('click', function (evt) {
     evt.preventDefault();
@@ -134,4 +138,10 @@
   });
   similarListElement.appendChild(fragment);
   userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+  window.setup = {
+    userDialog: userDialog,
+    show: show,
+    hide: hide,
+  };
 })();
