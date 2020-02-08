@@ -12,7 +12,7 @@
       left: box.left + pageXOffset,
     };
   };
-  window.setup.userDialog.coords = getCoords(window.setup.userDialog);
+  window.popup.userDialog.coords = getCoords(window.popup.userDialog);
 
   star.addEventListener('mousedown', function (evt) {
     targetCell.style.outline = '2px solid yellow';
@@ -46,14 +46,14 @@
       if (starPosition.x < 0) {
         starPosition.x = 0;
       }
-      if (starPosition.x > window.setup.userDialog.offsetWidth - star.offsetWidth) {
-        starPosition.x = window.setup.userDialog.offsetWidth - star.offsetWidth;
+      if (starPosition.x > window.popup.userDialog.offsetWidth - star.offsetWidth) {
+        starPosition.x = window.popup.userDialog.offsetWidth - star.offsetWidth;
       }
       if (starPosition.y < 0) {
         starPosition = 0;
       }
-      if (starPosition.y > window.setup.userDialog.offsetHeight - star.offsetHeight) {
-        starPosition.x = window.setup.userDialog.offsetHeight - star.offsetHeight;
+      if (starPosition.y > window.popup.userDialog.offsetHeight - star.offsetHeight) {
+        starPosition.x = window.popup.userDialog.offsetHeight - star.offsetHeight;
       }
       star.style.left = starPosition.x + 'px';
       star.style.top = starPosition.y + 'px';
@@ -71,8 +71,8 @@
       var getRelCoords = function (elem) {
         var box = elem.getBoundingClientRect();
         return {
-          top: box.top + pageYOffset - getCoords(window.setup.userDialog).top,
-          left: box.left + pageXOffset - getCoords(window.setup.userDialog).left,
+          top: box.top + pageYOffset - getCoords(window.popup.userDialog).top,
+          left: box.left + pageXOffset - getCoords(window.popup.userDialog).left,
         };
       };
 

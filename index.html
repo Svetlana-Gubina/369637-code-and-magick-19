@@ -181,33 +181,13 @@
     <p class="setup-similar-label">Петр Петров</p>
   </div>
 </template>
-
-<script>
-  var fireballSize = 22;
-  var FIREBALL_LEFT_SPEED = 5;
-  var FIREBALL_RIGHT_SPEED = 2;
-  var wizardSpeed = 3;
-  var wizardWidth = 70;
-  var RATIO = 1.337;
-  var getWizardHeight = function() {
-    var wizardHeight = RATIO * wizardWidth;
-    return wizardHeight;
-  }
-  var getFireballSpeed = function(left) {
-    return left ? FIREBALL_LEFT_SPEED : FIREBALL_RIGHT_SPEED;
-  };
-  var getWizardX = function (width) {
-    var wizardX = width / 2 - wizardWidth / 2;
-    return wizardX;
-  };
-  var getWizardY = function (height) {
-    var wizardY = height - 2/3 * height;
-    return wizardY;
-  };
-</script>
+<script src="js/sizes.js"></script>
 <script src="js/game.js"></script>
 <script src="js/stat.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/backend.js"></script>
 <script src="js/setup.js"></script>
+<script src="js/similar.js"></script>
 <script src="js/dialog.js"></script>
 <script src="js/star.js"></script>
 </body>
