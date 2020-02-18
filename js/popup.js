@@ -5,6 +5,24 @@
   var setupClose = userDialog.querySelector('.setup-close');
   var TOP = '80px';
   var LEFT = '50%';
+  var reg = /\.(?:jpg|jpeg|gif|png)$/;
+  var avatar = userDialog.querySelector('.upload').firstElementChild;
+  var fileInput = userDialog.querySelector('.upload').lastElementChild;
+
+  fileInput.addEventListener('change', function () {
+    var file = fileInput.files[0];
+    var fileName = file.name.toLowerCase();
+    if (reg.test(fileName)) {
+      var reader = new FileReader();
+      reader.addEventListener('load', function () {
+        avatar.src = reader.result;
+      });
+      reader.addEventListener('error', function () {
+        window.setup.errorHandler('Ошибка загрузки. Пожалуйста, попробуйте еще раз.');
+      });
+      reader.readAsDataURL(file);
+    }
+  });
 
   var openUserDialog = function () {
     window.setup.show(userDialog);
@@ -17,6 +35,9 @@
   var closeUserDialog = function () {
     window.setup.hide(userDialog);
     document.removeEventListener('keydown', escPressCloseUserDialog);
+    if (document.body.firstElementChild.classList.contains('errorMessage')) {
+      document.body.firstElementChild.remove();
+    }
   };
 
   var escPressCloseUserDialog = function (evt) {

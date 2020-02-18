@@ -15,6 +15,7 @@
 
   var errorHandler = function (errorMessage) {
     var node = document.createElement('div');
+    node.classList.add('errorMessage');
     node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
     node.style.position = 'absolute';
     node.style.left = 0;
